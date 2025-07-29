@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title id="optionsPageTitle"></title> <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .lang-switcher { text-align: right; margin-bottom: 20px; }
+        .lang-switcher button {
+            padding: 5px 10px;
+            margin-left: 5px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f0f0f0;
+        }
+        .lang-switcher button.active {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"] { width: 400px; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+        #status { margin-top: 15px; font-weight: bold; }
+        .success { color: green; }
+        .error { color: red; }
+        .api-link { margin-top: 20px; font-size: 0.9em; }
+
+        /* 言語ごとの表示/非表示を制御するCSS */
+        /* options.js側でdata-lang-content-id属性を使ってtextContent/innerHTMLを直接設定するため、
+           このCSSは主に初回表示時のデフォルトを制御し、JS側で表示/非表示を決定します。
+           ただし、ここではJSで制御されることを前提にdisplay:none;をコメントアウトします。
+        */
+        /*
+        [data-lang-content] {
+            display: none;
+        }
+        body[data-current-lang="ja"] [data-lang-content="ja"],
+        body[data-current-lang="en"] [data-lang-content="en"] {
+            display: block;
+        }
+        */
+
+        .warning-message {
+            color: #d8000c;
+            background-color: #ffd2d2;
+            border: 1px solid #d8000c;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            display: none; /* 初期は非表示 */
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-switcher">
+        <button id="lang-ja" data-lang="ja">日本語</button>
+        <button id="lang-en" data-lang="en">English</button>
+    </div>
+
+    <div id="apiWarning" class="warning-message">
+        </div>
+
+    <h1 id="mainHeading" data-lang-content-id="mainHeading"></h1>
+    <p id="apiDescription" data-lang-content-id="apiDescription"></p>
+    <label for="apiKey" id="apiKeyLabel" data-lang-content-id="apiKeyLabel"></label>
+    
+    <input type="text" id="apiKey" placeholder=""> <button id="saveButton" data-lang-content-id="saveButton"></button> <div id="status"></div>
+
+    <div class="api-link">
+        <p id="apiGuide" data-lang-content-id="apiGuide"></p>
+        <p id="apiNote" data-lang-content-id="apiNote"></p>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+</html>

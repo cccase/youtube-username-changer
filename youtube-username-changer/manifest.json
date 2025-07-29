@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Comment Username Resolver (API)",
+  "version": "1.0",
+  "description": "YouTube Data API を使用してコメントのユーザー名を解決します。",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://www.googleapis.com/*",
+    "https://www.youtube.com/*",  
+    "https://m.youtube.com/*"     
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "js": ["content.js"],
+      "matches": ["https://www.youtube.com/*", "https://m.youtube.com/*"], 
+      "run_at": "document_idle"
+    }
+  ],
+  "options_page": "options.html",
+  "action": {
+    "default_title": "YouTubeコメントユーザー名解決オプション"
+  }
+}
