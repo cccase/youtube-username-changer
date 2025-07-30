@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Username Resolver (No API)",
+  "version": "1.0",
+  "description": "YouTubeのコメント欄でハンドル名を従来のユーザー名に変換します。APIは使用しません。",
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],  
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "host_permissions": [
+    "*://*.youtube.com/*" 
+  ]
+}
